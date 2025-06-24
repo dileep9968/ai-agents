@@ -115,7 +115,7 @@ If the user is engaging in discussion, try to steer them towards getting in touc
         return system_prompt
     
     def chat(self, message, history):
-        messages = [{'role':'system', 'content':self.system_prompt()}]+[{'role':'user', 'content': message}]
+        messages = [{'role':'system', 'content':self.system_prompt()}]+history+[{'role':'user', 'content': message}]
         done = False
         while not done:
             response = self.gemini.chat.completions.create(model= 'gemini-2.0-flash', messages=messages, tools=tools)
